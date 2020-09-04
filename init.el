@@ -33,7 +33,7 @@
  '(custom-enabled-themes (quote (wheatgrass)))
  '(package-selected-packages
    (quote
-    (which-key try use-package transpose-frame lsp-mode slime))))
+    (tabbar which-key try use-package transpose-frame lsp-mode slime))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -49,9 +49,23 @@
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-;; stuff
+;; better buffer info, directory in minibuffer, and autocomplete
 
-;; global linum mode for line numbers
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
+
+;; tabbar for buffer management
+
+(use-package tabbar
+  :ensure t
+  :config
+  (tabbar-mode 1))
+
+;; other stuff
+;; global linum mode for line numbers at the left
 (global-linum-mode)
 (set-default-font "Menlo 18")
+
+;; common lisp support
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
